@@ -1,0 +1,30 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type User {
+  id: ID!
+  name: String!
+}
+
+type Conversation {
+  id: ID!
+  participants: [User!]!
+}
+
+type Message {
+  id: ID!
+  sender: User!
+  content: String!
+  conversation: Conversation!
+}
+
+type Query {
+  getUserConversations(userId: Int!): [Conversation!]!
+  getConversationMessages(conversationId: Int!): [Message!]!
+}
+
+type Mutation {
+  createConversation(userIds: [Int!]!): Conversation!
+  sendMessage(conversationId: Int!, content: String!): Message!
+}
