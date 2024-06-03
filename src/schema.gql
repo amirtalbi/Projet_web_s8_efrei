@@ -15,6 +15,7 @@ type Conversation {
 type Message {
   id: ID!
   sender: User!
+  receiver: User!
   content: String!
   conversation: Conversation!
 }
@@ -22,9 +23,12 @@ type Message {
 type Query {
   getUserConversations(userId: Int!): [Conversation!]!
   getConversationMessages(conversationId: Int!): [Message!]!
+  test: String!
+  getUserById(id: Int!): User!
 }
 
 type Mutation {
   createConversation(userIds: [Int!]!): Conversation!
-  sendMessage(conversationId: Int!, content: String!): Message!
+  sendMessage(senderId: Int!, receiverId: Int!, conversationId: Int!, content: String!): Message!
+  createUser(name: String!): User!
 }

@@ -3,17 +3,27 @@ import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { join } from 'path';
 import { ConversationResolver } from './conversation/conversation.resolver';
-import { User } from './user/user.model'; // Importez vos modèles
-import { Conversation } from './conversation/conversation.model';
-import { Message } from './message/message.model';
+import { RedisService } from './redis/redis.service';
+import { AppService } from './app.service';
+import { AppResolver } from './graphql/graphql.resolver';
+import { UserService } from './user/user.service';
+import { UserResolver } from './user/user.resolver';
 
 @Module({
   imports: [
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
       autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
+      path: '/graphql',
     }),
   ],
-  providers: [ConversationResolver],
+  providers: [
+    ConversationResolver,
+    RedisService,
+    AppService,
+    AppResolver,
+    UserService,
+    UserResolver,
+  ],
 })
 export class AppModule {}
