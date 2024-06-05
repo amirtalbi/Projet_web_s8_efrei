@@ -13,7 +13,9 @@ export class UserResolver {
   }
 
   @Query(() => User)
-  async getUserById(@Args('id', { type: () => Int }) id: number): Promise<User> {
+  async getUserById(
+    @Args('id', { type: () => Int }) id: number,
+  ): Promise<User> {
     return this.memoryService.getUserById(id);
   }
 
