@@ -1,4 +1,4 @@
-name: Build NestJS Project
+name: Build
 
 on:
   push:
