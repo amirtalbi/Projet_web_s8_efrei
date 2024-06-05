@@ -8,6 +8,7 @@ import { AppService } from './app.service';
 import { AppResolver } from './graphql/graphql.resolver';
 import { UserService } from './user/user.service';
 import { UserResolver } from './user/user.resolver';
+import { MemoryService } from './memory/memory.service';
 
 @Module({
   imports: [
@@ -24,6 +25,7 @@ import { UserResolver } from './user/user.resolver';
     AppResolver,
     UserService,
     UserResolver,
+    MemoryService,
   ],
 })
 export class AppModule {}

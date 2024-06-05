@@ -5,30 +5,33 @@
 type User {
   id: ID!
   name: String!
+  conversations: [Conversation!]
+  messages: [Message!]
+}
+
+type Message {
+  id: ID!
+  content: String!
+  sender: User!
+  conversation: Conversation!
 }
 
 type Conversation {
   id: ID!
   participants: [User!]!
-}
-
-type Message {
-  id: ID!
-  sender: User!
-  receiver: User!
-  content: String!
-  conversation: Conversation!
+  messages: [Message!]
 }
 
 type Query {
   getUserConversations(userId: Int!): [Conversation!]!
   getConversationMessages(conversationId: Int!): [Message!]!
   test: String!
+  getAllUsers: [User!]!
   getUserById(id: Int!): User!
 }
 
 type Mutation {
   createConversation(userIds: [Int!]!): Conversation!
-  sendMessage(senderId: Int!, receiverId: Int!, conversationId: Int!, content: String!): Message!
+  sendMessage(conversationId: Int!, content: String!, senderId: Int!): Message!
   createUser(name: String!): User!
 }
