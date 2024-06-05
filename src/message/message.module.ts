@@ -1,6 +1,6 @@
 import { BullModule } from '@nestjs/bull';
 import { Module } from '@nestjs/common';
-import { MemoryService } from 'src/memory/memory.service';
+import { MemoryService } from '../memory/memory.service';
 import { ConversationResolver } from '../conversation/conversation.resolver';
 import { MessageConsumer } from './message.consumer';
 

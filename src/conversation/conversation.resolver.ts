@@ -2,7 +2,7 @@
 import { InjectQueue } from '@nestjs/bull';
 import { Args, Int, Mutation, Query, Resolver } from '@nestjs/graphql';
 import { Queue } from 'bull';
-import { Message } from 'src/message/message.model';
+import { Message } from '../message/message.model';
 import { MemoryService } from '../memory/memory.service';
 import { Conversation } from './conversation.model';
 
