@@ -9,17 +9,17 @@ type User {
   messages: [Message!]
 }
 
+type Conversation {
+  id: ID!
+  participants: [User!]!
+  messages: [Message!]
+}
+
 type Message {
   id: ID!
   content: String!
   sender: User!
   conversation: Conversation!
-}
-
-type Conversation {
-  id: ID!
-  participants: [User!]!
-  messages: [Message!]
 }
 
 type Query {
