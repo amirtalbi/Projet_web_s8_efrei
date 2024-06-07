@@ -22,6 +22,18 @@ services:
     networks:
       - my-network
 
+  client: 
+    image: ghcr.io/amirtalbi/whatsapp-client:1.0.0
+    ports:
+      - "8080:8080"
+    volumes:
+      - .:/app
+      - /app/node_modules
+    depends_on:
+      - graphql-api
+    networks:
+      - my-network
+
 networks:
   my-network:
     driver: bridge
