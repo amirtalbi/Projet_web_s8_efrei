@@ -6,10 +6,8 @@ services:
     networks:
       - my-network
 
-  nest-app:
-    build:
-      context: .
-      dockerfile: Dockerfile
+  graphql-api:
+    image: ghcr.io/amirtalbi/whatsapp-api:1.0.0
     ports:
       - "3000:3000"
     volumes:
