@@ -31,10 +31,8 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Log in to Docker Hub
-        env:
-          REGISTRY_TOKEN: ${{ secrets.REGISTRY_TOKEN }}
-        run: echo "${{ secrets.REGISTRY_TOKEN }}" | docker login ghcr.io -u amirtalbi --password-stdin
+      - name: Login to Docker ghcr.io
+        run: docker login ghcr.io -u amirtalbi -p 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
 
       - name: Build client image
         run: npm run docker:build:client
