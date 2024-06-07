@@ -7,8 +7,8 @@
     "docker:login": "docker login ghcr.io -u amirtalbi -p $REGISTRY_TOKEN",
     "docker:build:client": "docker build -t ghcr.io/amirtalbi/whatsapp-client:1.0.0 ./client",
     "docker:build:server": "docker build -t ghcr.io/amirtalbi/whatsapp-api:1.0.0 ./server",
-    "docker:publish:client": "docker push -t ghcr.io/amirtalbi/whatsapp-client:1.0.0",
-    "docker:publish:server": "docker push -t ghcr.io/amirtalbi/whatsapp-api:1.0.0",
+    "docker:publish:client": "docker push ghcr.io/amirtalbi/whatsapp-client:1.0.0",
+    "docker:publish:server": "docker push ghcr.io/amirtalbi/whatsapp-api:1.0.0",
     "docker:up": "docker-compose up -d",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
