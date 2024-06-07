@@ -10,16 +10,35 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
+      - name: Checkout repository
+        uses: actions/checkout@v2
 
-    - name: Set up Node.js
-      uses: actions/setup-node@v2
-      with:
-        node-version: '18'
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: "18"
 
-    - name: Install dependencies
-      run: npm install
+      - name: Install dependencies
+        run: npm install
 
-    - name: Build NestJS
-      run: npm run build
+      - name: Build NestJS
+        run: npm run build
+
+  publish:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Publish repository
+        uses: actions/checkout@v2
+
+      - name: Build client image
+        run: npm run build:image:client
+
+      - name: Build server image
+        run: npm run build:image:server
+
+      - name: Publish client image
+        run: npm run publish:image:client
+
+      - name: Publish server image
+        run: npm run publish:image:server
