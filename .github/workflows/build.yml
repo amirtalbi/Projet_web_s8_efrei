@@ -32,7 +32,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Login to Docker ghcr.io
-        run: docker login ghcr.io -u amirtalbi -p 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
+        run: docker login ghcr.io -u amirtalbi ---password-stdin <<< ${{ secrets.REGISTRY_TOKEN }}
 
       - name: Build client image
         run: npm run docker:build:client
