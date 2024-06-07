@@ -32,13 +32,13 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Build client image
-        run: npm run build:image:client
+        run: npm run docker:build:client
 
       - name: Build server image
-        run: npm run build:image:server
+        run: npm run docker:build:server
 
       - name: Publish client image
-        run: npm run publish:image:client
+        run: npm run docker:publish:client
 
       - name: Publish server image
-        run: npm run publish:image:server
+        run: npm run docker:publish:server
