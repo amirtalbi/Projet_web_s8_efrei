@@ -4,7 +4,7 @@
   "main": "index.js",
   "devDependencies": {},
   "scripts": {
-    "docker:login": "docker login -u amirtalbi -p $TOKEN",
+    "docker:login": "docker login -u amirtalbi --password-stdin",
     "docker:build:client": "docker build -t amirtalbi/whatsapp-client:1.0.0 ./client",
     "docker:build:server": "docker build -t amirtalbi/whatsapp-api:1.0.0 ./server",
     "docker:publish:client": "docker push amirtalbi/whatsapp-client:1.0.0",
