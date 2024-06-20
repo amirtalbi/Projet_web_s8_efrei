@@ -34,10 +34,10 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v1
 
-      - name: Login to Docker ghcr.io
+      - name: Login to Docker
         env:
           TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: echo $TOKEN | docker login ghcr.io -u amirtalbi --password-stdin
+        run: echo $TOKEN | docker login -u amirtalbi --password-stdin
 
       - name: Build client image
         run: npm run docker:build:client
