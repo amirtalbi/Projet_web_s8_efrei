@@ -37,7 +37,7 @@ jobs:
       - name: Login to Docker
         env:
           TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: echo $TOKEN | docker login -u amirtalbi --password-stdin
+        run: npm run docker:login
 
       - name: Build client image
         run: npm run docker:build:client
