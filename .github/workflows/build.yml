@@ -48,3 +48,9 @@ jobs:
 
       - name: Publish server image
         run: npm run docker:publish:server
+
+      - name: Install Newman
+        run: npm install -g newman
+
+      - name: Run Newman tests
+        run: newman run server/test/testsUser.json

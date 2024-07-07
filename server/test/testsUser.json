@@ -1,0 +1,158 @@
+{
+    "info": {
+        "_postman_id": "da80e3cc-edd2-4301-927a-8b51e09a6cad",
+        "name": "testsUser",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+        "_exporter_id": "36145554"
+    },
+    "item": [
+        {
+            "name": "get all users",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    }
+                ],
+                "body": {
+                    "mode": "graphql",
+                    "graphql": {
+                        "query": "query GetAllUsers { getAllUsers { id name } }",
+                        "variables": "{}"
+                    }
+                },
+                "url": {
+                    "raw": "http://localhost:3000/graphql",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "3000",
+                    "path": [
+                        "graphql"
+                    ]
+                }
+            },
+            "response": [],
+            "event": [
+                {
+                    "listen": "test",
+                    "script": {
+                        "type": "text/javascript",
+                        "exec": [
+                            "pm.test(\"Status code is 200\", function () {",
+                            "    pm.response.to.have.status(200);",
+                            "});",
+                            "pm.test(\"Response has users\", function () {",
+                            "    var jsonData = pm.response.json();",
+                            "   pm.expect(jsonData).to.have.property('data');",
+                            "   pm.expect(jsonData.data).to.have.property('getAllUsers');",
+                            "   pm.expect(jsonData.data.getAllUsers).to.be.an('array');",
+                            "});"
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "name": "create user",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    }
+                ],
+                "body": {
+                    "mode": "graphql",
+                    "graphql": {
+                        "query": "mutation CreateUser($name: String!) { createUser(name: $name) { id name} }",
+                        "variables": "{\"name\": \"Jean Dupont\"}"
+                    }
+                },
+                "url": {
+                    "raw": "http://localhost:3000/graphql",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "3000",
+                    "path": [
+                        "graphql"
+                    ]
+                }
+            },
+            "response": [],
+            "event": [
+                {
+                    "listen": "test",
+                    "script": {
+                        "type": "text/javascript",
+                        "exec": [
+                            "pm.test(\"Status code is 200\", function () {",
+                            "    pm.response.to.have.status(200);",
+                            "});",
+                            "pm.test(\"Response has created user\", function () {",
+                            "    var jsonData = pm.response.json();",
+                            "   pm.expect(jsonData).to.have.property('data');",
+                            "   pm.expect(jsonData.data).to.have.property('createUser');",
+                            "   pm.expect(jsonData.data.createUser).to.have.property('name', 'Jean Dupont');",
+                            "});"
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "name": "get user by id",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    }
+                ],
+                "body": {
+                    "mode": "graphql",
+                    "graphql": {
+                        "query": "query GetUserById($id: Int!) { getUserById(id: $id) { id name } }",
+                        "variables": "{\"id\": 1}"
+                    }
+                },
+                "url": {
+                    "raw": "http://localhost:3000/graphql",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "3000",
+                    "path": [
+                        "graphql"
+                    ]
+                }
+            },
+            "response": [],
+            "event": [
+                {
+                    "listen": "test",
+                    "script": {
+                        "type": "text/javascript",
+                        "exec": [
+                            "pm.test(\"Status code is 200\", function () {",
+                            "    pm.response.to.have.status(200);",
+                            "});",
+                            "pm.test(\"Response has user\", function () {",
+                            "    var jsonData = pm.response.json();",
+                            "   pm.expect(jsonData).to.have.property('data');",
+                            "   pm.expect(jsonData.data).to.have.property('getUserById');",
+                            "   pm.expect(jsonData.data.getUserById).to.have.property('name');",
+                            "   pm.expect(jsonData.data.getUserById.name).to.be.a('string');",
+                            "});"
+                        ]
+                    }
+                }
+            ]
+        }
+    ]
+}
